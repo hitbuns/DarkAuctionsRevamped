@@ -1,0 +1,9 @@
+settings:
+  time:
+    cooldown:
+      timeSpan: 5
+      timeUnit: MINUTES
+    eventSpan:
+      timeSpan: 15
+      timeUnit: MINUTES
+  auction-location:
