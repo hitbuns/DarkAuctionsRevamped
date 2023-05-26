@@ -9,9 +9,16 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public class RewardsConfig extends Config {
 
+
+    private static RewardsConfig Instance;
+
     public RewardsConfig(JavaPlugin javaPlugin) {
         super(javaPlugin, javaPlugin.getDataFolder(),"rewards.yml","default-rewards.yml");
+        Instance = this;
+    }
 
+    public static RewardsConfig getInstance() {
+        return Instance;
     }
 
     /*

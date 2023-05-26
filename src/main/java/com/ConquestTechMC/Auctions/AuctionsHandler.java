@@ -87,7 +87,7 @@ public class AuctionsHandler implements Runnable, Listener {
             scheduledFuture.cancel(true);
     }
 
-    void startActiveEvent(ItemStack itemStack) {
+    public void startActiveEvent(ItemStack itemStack) {
         cancelCurrent();
 
         if (BukkitEventCaller.callEvent(new AuctionStartEvent(this)) && !Utils.isNullorAir(itemStack)) onAuctionStart(itemStack.clone());
@@ -96,7 +96,7 @@ public class AuctionsHandler implements Runnable, Listener {
         }
     }
 
-    void startCooldownCycle(boolean auctionEnd) {
+    public void startCooldownCycle(boolean auctionEnd) {
         cancelCurrent();
         scheduledFuture = scheduledExecutorService.schedule(this,settingsConfig
                 .getCooldownTimeSpan(),settingsConfig.getCooldownTimeUnit());
@@ -238,8 +238,8 @@ public class AuctionsHandler implements Runnable, Listener {
             return item;
         }
 
-        public ItemStack getItemStack() {
-            return itemStack;
+        public ItemStack getItemStack(boolean clone) {
+            return Utils.isNullorAir(itemStack) ? null : itemStack.clone();
         }
 
         public void setItemStack(ItemStack itemStack) {

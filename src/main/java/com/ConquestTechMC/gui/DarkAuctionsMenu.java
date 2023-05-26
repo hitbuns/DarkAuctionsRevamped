@@ -34,8 +34,8 @@ public class DarkAuctionsMenu extends AbstractClickableGUI implements Runnable {
     void init() {
         registerDefaultButtons();
 
-        registerPriority(new Button(3,guiClickEvent -> nextPage(),false));
-        registerPriority(new Button(5,guiClickEvent -> backPage(),false));
+        registerPriority(new Button(3,guiClickEvent -> nextPage(),false),
+                new Button(5,guiClickEvent -> backPage(),false));
 
         setupInventory();
     }
