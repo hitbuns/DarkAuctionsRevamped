@@ -6,4 +6,20 @@ settings:
     eventSpan:
       timeSpan: 15
       timeUnit: MINUTES
+  auction-name: "&cGrand Exchange"
+  auction-min: 1
+  auction-max: 3
+  auction-countdown-seconds: 10
+  auction-countdown-start-seconds: 60
   auction-location:
+    world: "world"
+    x: 0
+    y: 0
+    z: 0
+  spawn-location:
+    world: "world"
+    x: 15
+    y: 0
+    z: 15
+    yaw: 0
+    pitch: 0

@@ -5,3 +5,14 @@ api-version: 1.18
 
 depend:
   - PlaceholderAPI
+  - MenuAPI
+  - Vault
+
+commands:
+  auction:
+    usage: /auction
+    aliases:
+      - auctions
+      - darkauction
+      - darkauctions
+      - da

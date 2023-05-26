@@ -1,6 +1,9 @@
 package com.ConquestTechMC.config;
 
 import com.MenuAPI.Config;
+import com.MenuAPI.Utils;
+import org.bukkit.Bukkit;
+import org.bukkit.Location;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.concurrent.TimeUnit;
@@ -38,6 +41,48 @@ public class SettingsConfig extends Config {
 
     public long getEventTimeSpan() {
         return getLong("settings.time.eventSpan.timeSpan",0L);
+    }
+
+    public Location getEventLocation() {
+        try {
+            return new Location(Bukkit.getWorld(getString("settings.auction-location.world", "world")),
+                    getDouble("settings.auction-location.x", 0),
+                    getDouble("settings.auction-location.y", 0),
+                    getDouble("settings.auction-location.z", 0));
+        } catch (Exception e) {
+            return new Location(Bukkit.getWorld("world"),0,0,0);
+        }
+    }
+
+    public Location getEventSpawnLocation() {
+        try {
+            return new Location(Bukkit.getWorld(getString("settings.spawn-location.world", "world")),
+                    getDouble("settings.spawn-location.x", 0),
+                    getDouble("settings.spawn-location.y", 0),
+                    getDouble("settings.spawn-location.z", 0));
+        } catch (Exception e) {
+            return new Location(Bukkit.getWorld("world"),0,0,0);
+        }
+    }
+
+    public int getRandomAuctionItemAmount() {
+        return Utils.RNG_INT(getMinAuctionItemAmount(),getMaxAuctionItemAmount());
+    }
+
+    public int getAuctionCooldown() {
+        return getInt("auction-countdown-seconds",10);
+    }
+
+    public int getAuctionStartCooldown() {
+        return getInt("auction-countdown-start-seconds",30);
+    }
+
+    public int getMinAuctionItemAmount() {
+        return Math.min(Math.max(1,getInt("settings.auction-min",1)),getMaxAuctionItemAmount());
+    }
+
+    public int getMaxAuctionItemAmount() {
+        return Math.max(1,getInt("settings.auction-max"));
     }
 
 }
