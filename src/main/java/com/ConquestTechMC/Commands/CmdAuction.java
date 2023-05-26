@@ -57,6 +57,7 @@ public class CmdAuction implements CommandExecutor, TabCompleter {
         return true;
     }
 
+
     List<String> list = Collections.singletonList("join");
 
 
