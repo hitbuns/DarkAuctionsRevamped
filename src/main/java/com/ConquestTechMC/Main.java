@@ -12,6 +12,9 @@ public class Main extends JavaPlugin {
     @EventHandler
     public void onEnable() {
 
+
+        Instance = this;
+
         new Econ(this);
 
         registerCommands();
@@ -37,4 +40,9 @@ public class Main extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new AuctionListener(),this);
     }
 
+    private static Main Instance;
+
+    public static Main getInstance() {
+        return Instance;
+    }
 }

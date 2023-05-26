@@ -2,6 +2,7 @@ package com.ConquestTechMC.Auctions;
 
 import com.ConquestTechMC.Events.AuctionEndEvent;
 import com.ConquestTechMC.Events.AuctionStartEvent;
+import com.ConquestTechMC.Main;
 import com.ConquestTechMC.config.RewardsConfig;
 import com.ConquestTechMC.config.SettingsConfig;
 import com.ConquestTechMC.gui.DarkAuctionsMenu;
@@ -9,6 +10,7 @@ import com.MenuAPI.BukkitEventCaller;
 import com.MenuAPI.MenuAPI;
 import com.MenuAPI.Utils;
 import joptsimple.internal.Strings;
+import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.entity.*;
@@ -326,6 +328,14 @@ public class AuctionsHandler implements Runnable, Listener {
         @Override
         public void run() {
             countDown--;
+            Bukkit.getScheduler().runTask(Main.getInstance(),() -> MenuAPI.getInstance().getGuiListener().getHandlerList().values()
+                    .stream().map(abstractGUI -> {
+                        try {
+                            return (DarkAuctionsMenu) abstractGUI;
+                        } catch (Exception ignored) {
+                            return null;
+                        }
+                    }).filter(Objects::nonNull).forEach(DarkAuctionsMenu::updateItemHead));
         }
     }
 

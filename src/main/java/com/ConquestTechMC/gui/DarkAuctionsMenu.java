@@ -96,7 +96,7 @@ public class DarkAuctionsMenu extends AbstractClickableGUI implements Runnable {
 
     }
 
-    void updateItemHead() {
+    public void updateItemHead() {
         AuctionsHandler auctionsHandler = AuctionsHandler.getInstance();
         getInventory().setItem(4,new ItemBuilder(Material.PLAYER_HEAD)
                 .setDisplayName("&aHighest Bid - "+(auctionsHandler.getAuction().highestBid != null ?
